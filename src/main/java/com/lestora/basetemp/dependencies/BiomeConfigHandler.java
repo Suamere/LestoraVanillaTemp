@@ -1,7 +1,7 @@
-package com.lestora.vanillatemp.dependencies;
+package com.lestora.basetemp.dependencies;
 
-import com.lestora.vanillatemp.dependencies.Alt.AlternateBiomeConfigHandler;
-import com.lestora.vanillatemp.dependencies.Real.RealBiomeConfigHandler;
+import com.lestora.basetemp.dependencies.Alt.AlternateBiomeConfigHandler;
+import com.lestora.basetemp.dependencies.Real.RealBiomeConfigHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -31,10 +31,6 @@ public class BiomeConfigHandler {
         initialized = true;
     }
 
-//    public static Float getBiomeTemp(ResourceLocation rl) {
-//        return getBiomeTemp.apply(rl);
-//    }
-
     public static float getBiomeTemp(Biome biome) {
         if (!initialized) init();
 
@@ -58,7 +54,7 @@ public class BiomeConfigHandler {
         // Look up the temperature from our config map, falling back to the biome's base temperature.
         Float temp = (rl != null) ? getBiomeTemp.apply(rl) : null;
         if (temp == null) {
-            temp = 1f; // biome.getBaseTemperature() is so bad, just default to neutral 1
+            temp = 1f; // biome.getBaseTemperature() is so bad, just default to neutral val between -1f and 2f
         }
         return temp;
     }

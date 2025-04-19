@@ -1,6 +1,6 @@
-package com.lestora.vanillatemp.commands;
+package com.lestora.basetemp.commands;
 
-import com.lestora.vanillatemp.VanillaTemp;
+import com.lestora.basetemp.BaseTemp;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
@@ -24,10 +24,10 @@ public class VTCommands {
     }
 
     private static void registerGetCurrentTemp(LiteralArgumentBuilder<CommandSourceStack> root) {
-        root.then(Commands.literal("vanillaTemp")
+        root.then(Commands.literal("baseTemp")
             .then(Commands.literal("current")
                     .executes(ctx -> {
-                        float currentTemp = VanillaTemp.CalculateBodyTemp(Minecraft.getInstance().player);
+                        float currentTemp = BaseTemp.calculate(Minecraft.getInstance().player);
                         Minecraft.getInstance().gui.getChat().addMessage(Component.literal("Current body temp: " + currentTemp));
                         return 1;
                     })

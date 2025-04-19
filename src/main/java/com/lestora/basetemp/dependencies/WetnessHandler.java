@@ -1,7 +1,7 @@
-package com.lestora.vanillatemp.dependencies;
+package com.lestora.basetemp.dependencies;
 
-import com.lestora.vanillatemp.dependencies.Alt.AlternateWetnessHandler;
-import com.lestora.vanillatemp.dependencies.Real.RealWetnessHandler;
+import com.lestora.basetemp.dependencies.Alt.AlternateWetnessHandler;
+import com.lestora.basetemp.dependencies.Real.RealWetnessHandler;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.function.Function;

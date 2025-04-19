@@ -1,11 +1,7 @@
-package com.lestora.vanillatemp;
+package com.lestora.basetemp;
 
-import com.lestora.debug.DebugOverlay;
-import com.lestora.debug.models.DebugObject;
-import com.lestora.debug.models.DebugSupplier;
-import com.lestora.vanillatemp.dependencies.BiomeConfigHandler;
-import com.lestora.vanillatemp.dependencies.WetnessHandler;
-import net.minecraft.client.Minecraft;
+import com.lestora.basetemp.dependencies.BiomeConfigHandler;
+import com.lestora.basetemp.dependencies.WetnessHandler;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -26,24 +22,20 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-public class VanillaTemp {
+public class BaseTemp {
     static final Map<UUID, Float> playerTemps = new HashMap<>();
     static float maxDayDiff = 15f;
 
     public static void init() {
     }
 
-    static float getPlayerTemp(Player player) {
+    public static float getLastTemp(Player player) {
         return playerTemps.getOrDefault(player.getUUID(), 98.6f); // or whatever baseline you consider "normal"
     }
 
-    static void setPlayerTemp(Player player, float temp) {
-        playerTemps.put(player.getUUID(), temp);
-    }
-
-    public static float CalculateBodyTemp(Player player) {
+    public static float calculate(Player player) {
         var level = (ClientLevel) player.level();
-        float currentTemp = getPlayerTemp(player);
+        float currentTemp = getLastTemp(player);
 
         Holder<Biome> biomeHolder = level.getBiome(player.blockPosition());
         var biome = biomeHolder.value();
@@ -105,7 +97,6 @@ public class VanillaTemp {
             }
         }
 
-
         float nearHeatOffset = 0f;
         if (!player.isInWater()) {
             var nearHeatMax = 75f;
@@ -137,6 +128,10 @@ public class VanillaTemp {
         var newTemp = RubberBand(currentTemp, finalResult);
         setPlayerTemp(player, newTemp);
         return newTemp;
+    }
+
+    static void setPlayerTemp(Player player, float temp) {
+        playerTemps.put(player.getUUID(), temp);
     }
 
     private static float getWetnessOffset(Player player, float baseTemp) {

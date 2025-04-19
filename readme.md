@@ -1,6 +1,6 @@
-# Lestora Vanilla Temperature
+# Lestora Base Temperature
 
-This is a client-side helper mod that adds vanilla temperature calculation to a location (player).  It mainly takes into account the biome with some opinionated temperatures.  It also "rubberbands" such that your temperature changes toward new environment changes at different speeds based on how dramatic the change is.  It will be colder in snow, hotter near lava (no matter where you are), holding buckets of snow/lava, and more.
+This is a client-side helper mod that adds base temperature calculation to a location (player).  It mainly takes into account the biome with some opinionated temperatures.  It also "rubberbands" such that your temperature changes toward new environment changes at different speeds based on how dramatic the change is.  It will be colder in snow, hotter near lava (no matter where you are), holding buckets of snow/lava, and more.
 
 This mod also allows you to optionally depend on Lestora Config, which will create a `config/lestora-biome.toml` with default values, where you can add or update values.
 
@@ -18,7 +18,7 @@ Lastly, this mod optionally depends on Lestora Debug, which will show the temper
 3. Launch Minecraft with the Forge profile.
 
 ## Commands
-- Use the command `/lestora vanillaTemp current` - Outputs the current player's body temperature.  Useful if Debug is not installed, or disabled.
+- Use the command `/lestora baseTemp current` - Outputs the current player's body temperature.  Useful if Debug is not installed, or disabled.
 
 ## Compatibility
 - **Minecraft Version:** 1.21.4

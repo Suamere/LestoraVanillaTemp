@@ -1,4 +1,4 @@
-package com.lestora.vanillatemp.dependencies.Alt;
+package com.lestora.basetemp.dependencies.Alt;
 
 import net.minecraft.resources.ResourceLocation;
 

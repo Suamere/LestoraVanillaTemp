@@ -1,4 +1,4 @@
-package com.lestora.vanillatemp.dependencies.Real;
+package com.lestora.basetemp.dependencies.Real;
 
 import com.lestora.wetness.models.Wetness;
 import com.lestora.wetness.models.WetnessUtil;
