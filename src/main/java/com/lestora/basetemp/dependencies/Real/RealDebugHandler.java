@@ -8,11 +8,10 @@ import net.minecraft.client.Minecraft;
 
 public class RealDebugHandler {
     public static void registerDebug() {
-        System.err.println("DO IT");
         var bodyTempSupplier = new DebugSupplier("Lestora_BodyTemp", 9, () -> {
-            float bodyTemp = BaseTemp.calculate(Minecraft.getInstance().player);
-            var temp = String.valueOf(bodyTemp);
-            int color = bodyTemp > 120 ? 16711680 : (bodyTemp < 60 ? 255 : 16776960);
+            var bodyTemp = BaseTemp.getLastTemp(Minecraft.getInstance().player.getUUID());
+            var temp = String.valueOf(bodyTemp.playerTemp());
+            int color = bodyTemp.playerTemp() > 120 ? 16711680 : (bodyTemp.playerTemp() < 60 ? 255 : 16776960);
             return new DebugObject("Temp", color, false, temp, color, false,
                     "Body Temp", color, true, temp, color, true);
         });

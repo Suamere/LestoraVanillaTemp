@@ -10,8 +10,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class LestoraVTMod {
     public LestoraVTMod(FMLJavaModLoadingContext constructContext) {
         WetnessHandler.init();
-        BiomeConfigHandler.init();
-        BaseTemp.init();
         DebugHandler.init();
     }
 }
